@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:text="${title}"></h1>
+	<br>
+	<a th:href="@{'/ver/' + ${user.userId}(format=json)}" >JSON</a>
+	 
+	<br>
+
+	<ul>
+		<li th:text="${user.idUser}"></li>
+		<li th:text="${user.firstName} + ', ' + ${user.lastName}"></li>
+		<li th:text="${user.createOnUserChanged}"></li>
+		<li th:text="${user.email}"></li>
+	</ul>
+	<table>
+		<thead>
+			<tr>
+				<th>createOn</th>
+				<th>Latitud</th>
+				<th>Longitud</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="location: ${user.listLocations}">
+				<td th:text="${location.createOn}"></td>
+				<td th:text="${location.latitud}"></td>
+				<td th:text="${location.longitud}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
